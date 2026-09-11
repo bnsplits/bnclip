@@ -62,7 +62,7 @@ bnclip list | fuzzel --dmenu | cut -f1 | xargs -r bnclip decode | wl-copy --type
 
 `mime` is one of `text/plain`, `text/uri-list`, or `image/*`.
 Previews look like `hello world`, `[[ file: report.pdf ]]`, `[[ directory: Photos/ ]]`,
-or `[[ image png 1.2 MiB ]]`.
+or `[[ image: png 1.2 MiB ]]`.
 
 ### Pin an entry
 
