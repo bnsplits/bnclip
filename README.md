@@ -57,11 +57,11 @@ bnclip list | fuzzel --dmenu | cut -f1 | xargs -r bnclip decode | wl-copy --type
 `bnclip list` emits TSV without a header, newest first:
 
 ```
-<hash>	<mime>	<pinned>	<timestamp>	<preview>
+<hash>  <mime>  <pinned>  <timestamp>  <preview>
 ```
 
 `mime` is one of `text/plain`, `text/uri-list`, or `image/*`.
-Previews look like `hello world`, `[[ report.pdf ]]`, `[[ Photos/ ]]`,
+Previews look like `hello world`, `[[ file: report.pdf ]]`, `[[ directory: Photos/ ]]`,
 or `[[ image png 1.2 MiB ]]`.
 
 ### Pin an entry
