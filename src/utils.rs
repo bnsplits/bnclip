@@ -145,16 +145,16 @@ pub fn create_preview(bytes: &[u8], mime: &str) -> String {
                 Some(name) if !name.is_empty() => name,
                 _ => paths[0].as_str(),
             };
-            let slash = if Path::new(&paths[0]).is_dir() {
-                "/"
+            let (path_type, slash) = if Path::new(&paths[0]).is_dir() {
+                ("directory", "/")
             } else {
-                ""
+                ("file", "")
             };
             let first = middle_truncate(first, PREVIEW_STORE_LEN - 12);
             let s = if paths.len() == 1 {
-                format!("[[ {first}{slash} ]]")
+                format!("[[ {path_type}: {first}{slash} ]]")
             } else {
-                format!("[[ {first}{slash} +{} ]]", paths.len() - 1)
+                format!("[[ {path_type}: {first}{slash} +{} ]]", paths.len() - 1)
             };
             return s.chars().take(PREVIEW_STORE_LEN).collect();
         }
@@ -168,10 +168,10 @@ pub fn create_preview(bytes: &[u8], mime: &str) -> String {
 
     if let Some(ext) = mime.strip_prefix("image/") {
         let size = ByteSize::b(bytes.len() as u64);
-        return format!("[[ image {ext} {size} ]]");
+        return format!("[[ image: {ext} {size} ]]");
     }
 
-    format!("[[ data {} ]]", ByteSize::b(bytes.len() as u64))
+    format!("[[ data: {} ]]", ByteSize::b(bytes.len() as u64))
 }
 
 fn middle_truncate(s: &str, max_chars: usize) -> String {
