@@ -1,6 +1,6 @@
 # bnclip
 
-_Clipboard history "manager" for Wayland, in the spirit of cliphist_
+Clipboard history "manager" for Wayland, in the spirit of cliphist
 
 - Write clipboard changes to a history file.
 - Recall history with **dmenu**, **rofi**, **wofi**, **fuzzel** (or whatever other picker you like).
